@@ -173,3 +173,5 @@ while True:
                 break
             else:
                 print('\033[1;30;40m PLEASE ANSWER IN A YES OR NO FORM')
+
+# I've just realised that the only place you can go is the diner, sorry guys. I'll fix it up tomorrow and push another update :)                
