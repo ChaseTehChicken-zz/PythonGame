@@ -2,7 +2,15 @@
 
 from time import sleep
 import winsound
+import sys
+import subprocess
 import colorama
+
+### INSTALL COLORAMA? ###
+
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
 
 ### VARIABLES ###
 
@@ -16,8 +24,15 @@ StickDamage = 2.5
 GreenSlimeDamage = 1
 possiblelocations = ['Diner', 'Library', 'Blacksmith']
 
+def gameover():
+    if health <= 0:
+        for n in range(1, 21):
+            print('\n')
+        print('\033[1;31;40mGAME OVER')
+
 ### GAME ###
 
+install('colorama')
 colorama.init()
 winsound.PlaySound("startmenu.wav", winsound.SND_LOOP + winsound.SND_ASYNC)
 name = input("A new adventurer appears! What is their name?: ")
@@ -28,24 +43,24 @@ print(f'\033[1;36;40m Welcome to the village travellor!')
 sleep(3.0)
 print(f'\033[1;36;40mI believe your name was {name} wasnt it?')
 sleep(2.0)
-print('\033[1;36;40m Yes, that was it.')
+print('\033[1;36;40mYes, that was it.')
 sleep(1.5)
-print('\033[1;36;40m Anyways, welcome to our village')
+print('\033[1;36;40mAnyways, welcome to our village')
 sleep(2.0)
-print('\033[1;36;40m We have many things to do here')
+print('\033[1;36;40mWe have many things to do here')
 sleep(2.0)
-print('\033[1;36;40m We have a library, where you can learn magic spells, or just read a novel')
+print('\033[1;36;40mWe have a library, where you can learn magic spells, or just read a novel')
 sleep(5.0)
-print('\033[1;36;40m We also have a blacksmith, down by the river. He\'s a crazy guy, ignore most of what he says')
+print('\033[1;36;40mWe also have a blacksmith, down by the river. He\'s a crazy guy, ignore most of what he says')
 sleep(7.0)
-print('\033[1;36;40m Theres also an amazing diner down the road. Family owned and the best food in town.')
+print('\033[1;36;40mTheres also an amazing diner down the road. Family owned and the best food in town.')
 sleep(5.0)
-print('\033[1;36;40m Because its the only food in town...')
+print('\033[1;36;40mBecause its the only food in town...')
 sleep(5.0)
-print('\033[1;36;40m Why dont you go explore? I\'ll be here until you get back.')
+print('\033[1;36;40mWhy dont you go explore? I\'ll be here until you get back.')
 sleep(5.0)
-print('\033[1;36;40m Oh yeah! My name is Tyke! I live here. Uhh, yeah. OK, you can go explore')
-print('\033[1;36;40m Where do you want to go? Library, Blacksmith, or Diner?\n\033[1;31;40m')
+print('\033[1;36;40mOh yeah! My name is Tyke! I live here. Uhh, yeah. OK, you can go explore')
+print('\033[1;36;40mWhere do you want to go? Library, Blacksmith, or Diner?\n\033[1;31;40m')
 
 while True:
     location = input("LOCATION: ")
@@ -57,65 +72,66 @@ while True:
     elif lowerlocation == 'diner':
         break
     else:
-        print("\033[1;30;40m PLEASE ENTER A VALID LOCATION")
+        print("\033[1;30;40mPLEASE ENTER A VALID LOCATION")
 
 print(f'\033[0;34;40m On your way to the {location}, you stumble across a green slime')
 locationUpper = location.capitalize()
 sleep(2.0)
-print('\033[0;34;40m It may look friendly, but trust me, the narrator, it isnt.')
+print('\033[0;34;40mIt may look friendly, but trust me, the narrator, it isnt.')
 sleep(4.0)
-print("\033[0;34;40m When you stumble across an enemy, you can run, or you can fight.")
+print("\033[0;34;40mWhen you stumble across an enemy, you can run, or you can fight.")
 sleep(2.0)
-print('\033[1;30;40m What do you choose to do now?')
+print('\033[1;30;40mWhat do you choose to do now?')
 while True:
     action = input("RUN OR FIGHT?: ")
     if action == 'fight':
         break
     else:
         print('\033[0;34;40m Sorry you have to fight this one..')
-print('\033[0;34;40m Hi, narrator again.')
+print('\033[0;34;40mHi, narrator again.')
 sleep(1.0)
-print('\033[0;34;40m You really think you can fight that thing with your fists??')
+print('\033[0;34;40mYou really think you can fight that thing with your fists??')
 sleep(3.0)
-print('\033[0;34;40m HA!')
+print('\033[0;34;40mHA!')
 sleep(1.0)
-print('\033[0;34;40m You must first equip a weapon.')
+print('\033[0;34;40mYou must first equip a weapon.')
 sleep(3.0)
-print('\033[0;34;40m I\'m pretty sure I left a stick in your backpack\n\033[1;31;40m')
+print('\033[0;34;40mI\'m pretty sure I left a stick in your backpack\n\033[1;31;40m')
 
 while True:
     weapon = input('SELECT A WEAPON: ')
     if weapon == 'stick':
-        print(f'\033[1;30;40m SELECTED WEAPON IS NOW: {weapon}')
+        print(f'\033[1;30;40mSELECTED WEAPON IS NOW: {weapon}')
         sleep(3.0)
-        print('\033[0;34;40m Thats more like it. I\'ll leave you to it')
+        print('\033[0;34;40mThats more like it. I\'ll leave you to it')
         sleep(2.0)
-        print('\033[1;30;40m TO ATTACK, TYPE attack')
-        print('\033[1;30;40m TO DEFEND, TYPE defend')
-        print('\033[1;30;40m TO RUN, TYPE run')
-        print('\033[1;30;40m TO SHOW MERCY OR SPARE YOUR OPPONENT, TYPE mercy')
+        print('\033[1;30;40mTO ATTACK, TYPE attack')
+        print('\033[1;30;40mTO DEFEND, TYPE defend')
+        print('\033[1;30;40mTO RUN, TYPE run')
+        print('\033[1;30;40mTO SHOW MERCY OR SPARE YOUR OPPONENT, TYPE mercy')
         while True:
             action = input('WHAT DO YOU DO?:')
             if action == 'attack':
                 break
             else:
-                print('\033[0;34;40m Sorry, you have to fight this one..')
+                print('\033[0;34;40mSorry, you have to fight this one..')
         winsound.PlaySound('enemyapproaching.wav', winsound.SND_LOOP + winsound.SND_ASYNC)
         GreenSlimeHealth = 5
-        print('\033[1;30;40m YOU ATTACKED THE SLIME')
+        print('\033[1;30;40mYOU ATTACKED THE SLIME')
         sleep(1.0)
         GreenSlimeHealth = GreenSlimeHealth - StickDamage
-        print(f'\033[1;30;40m GREEN SLIME HEALTH IS NOW {GreenSlimeHealth}')
+        print(f'\033[1;30;40mGREEN SLIME HEALTH IS NOW {GreenSlimeHealth}')
         sleep(3.0)
-        print('\033[1;30;40m GREEN SLIME IS ANGERED')
+        print('\033[1;30;40mGREEN SLIME IS ANGERED')
         sleep(1.0)
-        print('\033[1;30;40m GREEN SLIME ATTACKS')
+        print('\033[1;30;40mGREEN SLIME ATTACKS')
         sleep(1.0)
-        print(f'\033[1;30;40m YOU LOSE {GreenSlimeDamage} health!')
+        print(f'\033[1;30;40mYOU LOSE {GreenSlimeDamage} HEALTH!')
+        gameover()
         sleep(2.0)
         health = health - GreenSlimeDamage
-        print(f'\033[1;30;40m HEALTH: {health}')
-        print('\033[1;30;40m attack, run, mercy')
+        print(f'\033[1;30;40mHEALTH: {health}')
+        print('\033[1;30;40mattack, run, mercy')
         action = input('WHAT DO YOU DO?:')
         while True:
             if action == 'attack':
@@ -173,5 +189,17 @@ while True:
                 break
             else:
                 print('\033[1;30;40m PLEASE ANSWER IN A YES OR NO FORM')
-
-# I've just realised that the only place you can go is the diner, sorry guys. I'll fix it up tomorrow and push another update :)                
+    elif lowerlocation == 'library':
+        print('Ah, hi Mark.. I was waiting for y-')
+        sleep(5.0)
+        print('Wait a minute..')
+        sleep(2.0)
+        print('Youre not Mark..')
+        sleep(2.0)
+        print('Wait! Are you?..')
+        sleep(2.0)
+        print('Sorry, excuse me. My name is Debbie..')
+        sleep(2.0)
+        print('Im not used to having people around here..')
+        sleep(3.0)
+        print(f'What was your name again? {name}')
